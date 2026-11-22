@@ -6,7 +6,7 @@ authors:
   - family-names: Hussain
     given-names: Sajid Khan
 version: 1.0.0
-date-released: 2026-11-22   # set to the release date when you publish v1.0.0
+date-released: 2026-11-22
 license: MIT
 url: "https://oeis.org/A402658"
 repository-code: "https://github.com/Sajidsaj/oeis-A402658-ec-y2-x3-7"
