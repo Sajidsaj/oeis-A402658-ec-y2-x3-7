@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite it as below."
+title: "OEIS A402658: points of y^2 = x^3 + 7 over GF(p) when the count is prime (data, proofs and verification code)"
+type: software
+authors:
+  - family-names: Hussain
+    given-names: Sajid Khan
+version: 1.0.0
+date-released: 2026-11-22
+license: MIT
+url: "https://oeis.org/A402658"
+keywords:
+  - OEIS
+  - integer sequences
+  - elliptic curves
+  - complex multiplication
+  - amicable pairs

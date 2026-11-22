@@ -1,0 +1,45 @@
+OEIS A402658 -- text as submitted on 22 Nov 2026 (the OEIS page is authoritative)
+
+Name:    Number of points on the elliptic curve y^2 = x^3 + 7 over GF(p), including the point at infinity, where p = A399358(n).
+
+Data:    7, 31, 61, 79, 67, 79, 127, 139, 199, 313, 397, 397, 547, 613, 691, 829, 967, 907, 1009, 1093, 1279, 1303, 1249, 1663, 1753, 2143, 2089, 2341, 2203, 2557, 2677, 2647, 2689, 3373, 3391, 3433, 3469, 3709, 3793, 3853, 3739, 4021, 4243, 4159, 4447, 4597, 4597
+
+Offset:  1,1
+
+Comments:
+ A399358 lists the primes p (p != 7) for which E: y^2 = x^3 + 7 has a prime number of points over GF(p). The curve is singular over GF(2), GF(3) and GF(7), and for primes p == 2 (mod 3) it has p+1 points, an even number greater than 2.
+ All terms are primes == 1 (mod 6).
+ Each prime occurs at most twice. Indeed, if a(n) = q, then A399358(n) is one of the six numbers of points of the curves y^2 = x^3 + b over GF(q), b != 0, and for q > 7 at most two of these six numbers are prime, since two of them are even and two others are odd multiples of 3. The first values occurring twice are 79 = a(4) = a(6), 397 = a(11) = a(12) and 4597 = a(46) = a(47).
+ a(n) = A399358(n) if and only if A399358(n) is an anomalous prime, i.e., E(GF(p)) has exactly p points: 61, 127, 397, 547, 4447, 6211, ...
+ Following Silverman and Stange, an amicable pair for E is a pair of distinct primes (p, q) of good reduction with #E(GF(p)) = q and #E(GF(q)) = p. The smallest pairs are (67, 79), (907, 967) and (1249, 1303). Among the 5670 terms of A399358 below 2*10^6 there are 738 amicable pairs (1476 primes) and 32 anomalous primes.
+ Let p = A399358(n) > 13 and q = a(n). Then #E(GF(q)) = p if and only if (p mod 84, q mod 84) is one of (43,43), (43,67), (43,73), (61,61), (67,43), (67,79), (73,43), (79,67), (79,79). This follows from cubic and quadratic reciprocity, which reduce the question to a finite table of sextic residue symbols modulo 84; it agrees with all terms below 2*10^6.
+
+Example:
+ a(1) = 7: A399358(1) = 13 and y^2 = x^3 + 7 over GF(13) has 7 points.
+ a(4) = a(6) = 79: A399358(4) = 67 and A399358(6) = 97, and the curve has 79 points over both GF(67) and GF(97). Also a(5) = 67 = A399358(4), so (67, 79) is an amicable pair.
+
+Links:
+ Sajid Khan Hussain, <a href="/A402658/b402658.txt">Table of n, a(n) for n = 1..5670</a>
+ Joseph H. Silverman and Katherine E. Stange, <a href="https://arxiv.org/abs/0912.1831">Amicable pairs and aliquot cycles for elliptic curves</a>, arXiv:0912.1831 [math.NT], 2009; Exp. Math. 20 (2011), 329-357.
+
+Formula:
+ a(n) = p + 1 - t, where p = A399358(n), t == 1 (mod 6) and t^2 + 3*u^2 = 4*p for some integer u != 0; in particular |a(n) - p - 1| < 2*sqrt(p).
+ a(n) = p + 1 + conj(z)*pi + z*conj(pi), where p = pi*conj(pi) in Z[w] (w a primitive cube root of unity), pi == 2 (mod 3), and z = (28/pi)_6 is a sextic residue symbol. See Ireland and Rosen, Chapter 18, Section 3.
+
+References:
+ Kenneth Ireland and Michael Rosen, A Classical Introduction to Modern Number Theory, 2nd ed., Graduate Texts in Mathematics 84, Springer-Verlag, 1990, Chapter 18, Section 3.
+
+Program:
+ (PARI) forprime(p=5, 4550, if(p!=7, my(N=ellcard(ellinit([0,7], p))); if(isprime(N), print1(N", "))))
+ (Python)
+ from sympy import primerange, isprime
+ def N(p):
+     e = (p-1)//2
+     return 1 + sum(1 if (r:=(x**3+7)%p)==0 else (2 if pow(r, e, p)==1 else 0) for x in range(p))
+ print([n for p in primerange(5, 4551) if p != 7 and isprime(n := N(p))])
+
+Cross-references: Cf. A399358, A000040.
+
+Keyword: nonn
+
+Author:  Sajid Khan Hussain, Nov 22 2026
