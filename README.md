@@ -46,4 +46,4 @@ See `RESULTS.md`. In short: the structural claims and the mod-84 amicable criter
 
 ## License
 
-Code: MIT (see `LICENSE`). OEIS text and data: under the OEIS End-User License, i.e. Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0), see https://oeis.org/LICENSE, once published.
+Code: MIT (see `LICENSE`). OEIS text and data: under the OEIS End-User License, i.e. Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0), see https://oeis.org/LICENSE.
